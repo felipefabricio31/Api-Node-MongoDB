@@ -1,0 +1,9 @@
+--Criar pasta cmd
+mkdir node-str
+
+--Abrir pasta
+cd .\node-str\
+
+--Criar projeto
+-- -y trás as informações padroes no packege.js
+npm init -y
