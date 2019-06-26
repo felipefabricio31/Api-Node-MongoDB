@@ -7,3 +7,23 @@ cd .\node-str\
 --Criar projeto
 -- -y trás as informações padroes no packege.js
 npm init -y
+
+//Criar setup do banco MongoDB
+
+-Criar usuarios e configurações para o banco de dados.
+https://www.mongodb.com/
+
+-Studio 3T (Free para estudantes)
+https://studio3t.com/
+
+/*Acelere tarefas como construção de consultas, 
+exploração de dados, importação / exportação, 
+geração de código e muito mais - com ou sem o conhecimento da 
+linguagem de consulta do MongoDB.
+Visualiza as informações das colecoes.
+*/
+
+--Adicionar biblioteca
+npm install mongoose --save
+
+
