@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
+const ValidationContract = require('../validators/fluent-validator');
 
 exports.get = (req, res, next) => {
     Product.find({
@@ -50,12 +51,20 @@ exports.getByTag = (req, res, next) => {
         });
 }
 
-
 exports.post = (req, res, next) => {
+    let contract = new ValidationContract();
+    contract.hasMinLen(req.body.title, 3, 'O título deve conter pelo menos 3 caracteres.');
+    contract.hasMinLen(req.body.slug, 3, 'O slug deve conter pelo menos 3 caracteres.');
+    contract.hasMinLen(req.body.description, 3, 'A descricao deve conter pelo menos 3 caracteres.');
+
+    //Se os dados forem válidos
+    if (!contract.isValid()) {
+        res.status(400).send(contract.errors()).end();
+        return;
+    }
+
     //Tudo que vem na requisição, atribuo para o corpo do meu produto.
     var product = new Product(req.body); //Opção01
-    //var product = new Product(); //Opção 02
-    //product.title = req.body.title;
     product.save()
         .then(x => {
             res.status(201).send({
@@ -68,15 +77,6 @@ exports.post = (req, res, next) => {
             });
         });
 };
-
-/*exports.put = (req, res, next) => {
-    //Recupera parametros vindo da url
-    const id = req.params.id;
-    res.status(201).send({
-        id: id,
-        item: req.body
-    });
-};*/
 
 //Update de um produto, por ID
 exports.put = (req, res, next) => {
