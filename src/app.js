@@ -1,4 +1,4 @@
-'use strict';
+'Use strict';
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,6 +9,9 @@ const router = express.Router();
 
 //Conecta ao banco
 mongoose.connect('mongodb+srv://felipesouza:teste0123@cluster0-oba9m.azure.mongodb.net/test?retryWrites=true&w=majority');
+
+//Carrega os models
+const Product = require('./models/product').default;
 
 //Carregar as rotas
 const indexRoute = require('./routes/index-routes');

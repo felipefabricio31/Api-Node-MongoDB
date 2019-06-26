@@ -1,26 +1,26 @@
-'Use strict';
+'use strict';
 
-const mogoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
     //_id - Cria automatico
     title: {
-        title: String,
-        required: true,
+        type: String,
+        required: [true, 'O title é obrigatório.'],
         trim: true
     },
     //Ex: Cadeira Gamer / slug: cadeira-gamer
     slug: {
         type: String,
-        required: true,
+        required: [true, 'O slug é obrigatório.'],
         trim: true,
         index: true,
         unique: true
     },
     //Descricao do Produto
     description: {
-        title: String,
+        type: String,
         required: true,
         trim: true
     },
@@ -42,7 +42,7 @@ const schema = new Schema({
     }]
 });
 
-module.exports = mogoose.model('Product', schema);
+export default model('Product', schema);
 
 //Saída do Schema
 /*{
