@@ -42,8 +42,7 @@ const schema = new Schema({
     }]
 });
 
-export default model('Product', schema);
-
+module.exports = mongoose.model('Product', schema);
 //Saída do Schema
 /*{
     "title":"titulo",

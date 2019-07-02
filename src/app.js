@@ -8,7 +8,13 @@ const app = express();
 const router = express.Router();
 
 //Conecta ao banco
-mongoose.connect('mongodb+srv://felipesouza:teste0123@cluster0-oba9m.azure.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://felipesouza:teste0123@cluster0-oba9m.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
+    .then(() => {
+        console.log(' mongoDB está conectado ... ')
+    })
+    .catch((err) => {
+        throw err
+    });
 
 //Carrega os models
 const Product = require('./models/product').default;
