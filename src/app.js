@@ -25,6 +25,7 @@ const Order = require('./models/order');
 const indexRoute = require('./routes/index-routes');
 const productRoute = require('./routes/product-route.js');
 const customerRoute = require('./routes/customer-route.js');
+const orderRoute = require('./routes/order-route.js');
 
 //Conversão do conteudo
 app.use(bodyParser.urlencoded({
@@ -36,5 +37,7 @@ app.use(bodyParser.json());
 app.use('/', indexRoute);
 app.use('/products', productRoute);
 app.use('/customers', customerRoute);
+app.use('/orders', orderRoute);
 
 module.exports = app;
+
