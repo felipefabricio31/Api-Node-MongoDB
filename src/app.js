@@ -17,11 +17,14 @@ mongoose.connect('mongodb+srv://felipesouza:teste0123@cluster0-oba9m.azure.mongo
     });
 
 //Carrega os models
-const Product = require('./models/product').default;
+const Product = require('./models/product');
+const Customer = require('./models/customer');
+const Order = require('./models/order');
 
 //Carregar as rotas
 const indexRoute = require('./routes/index-routes');
 const productRoute = require('./routes/product-route.js');
+const customerRoute = require('./routes/customer-route.js');
 
 //Conversão do conteudo
 app.use(bodyParser.urlencoded({
@@ -32,5 +35,6 @@ app.use(bodyParser.json());
 
 app.use('/', indexRoute);
 app.use('/products', productRoute);
+app.use('/customers', customerRoute);
 
 module.exports = app;
