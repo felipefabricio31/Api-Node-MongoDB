@@ -3,12 +3,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const config = require('./config');
+
 
 const app = express();
 const router = express.Router();
 
 //Conecta ao banco
-mongoose.connect('mongodb+srv://felipesouza:teste0123@cluster0-oba9m.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect(config.connectionString, { useNewUrlParser: true })
     .then(() => {
         console.log(' mongoDB está conectado ... ')
     })
