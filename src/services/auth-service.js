@@ -6,7 +6,7 @@ exports.generateToken = async (data) => {
 }
 
 //Recebe token
-exports.decodeToken = async (data) => {
+exports.decodeToken = async (token) => {
     var data = await jwt.verify(token, global.SALT_KEY);
     return data;
 }
